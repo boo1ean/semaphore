@@ -1,0 +1,19 @@
+{
+    "name": "boo1ean/semaphore",
+    "description": "Don't let your app be afraid of parallel execution",
+    "keywords": ["semaphore", "parallel", "good choice"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Egor Gumenyuk",
+            "email": "boo1ean0807@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    }
+    "autoload": {
+        "psr-0": { "Semaphore": "src/" }
+    }
+}
