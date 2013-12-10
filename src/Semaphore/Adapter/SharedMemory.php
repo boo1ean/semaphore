@@ -12,12 +12,6 @@ class SharedMemory implements AdapterInterface
 	const K_SEM_COUNT = 'semaphores count';
 
 	/**
-	 * Key for semaphores list in shm
-	 * @const string
-	 */
-	const K_SEM_LIST = 'semaphores list';
-
-	/**
  	 * Shared memory storage
  	 * @var Shared\Storage
 	 */
@@ -36,6 +30,15 @@ class SharedMemory implements AdapterInterface
 	public function __construct($key = self::KEY) {
 		$this->key = $key;
 		$this->setupStorage();
+	}
+
+	/**
+	 * Destroy shared storage if there is 0 semaphores out there
+	 */
+	public function __destruct() {
+		if (0 == $this->count()) {
+			$this->shm->destroy();
+		}
 	}
 
 	/**
@@ -71,6 +74,10 @@ class SharedMemory implements AdapterInterface
 	 */
 	public function locked($key) {
 		return $this->shm->has($key);
+	}
+
+	public function count() {
+		return $this->shm->get(self::K_SEM_COUNT);
 	}
 
 	/**
@@ -138,6 +145,5 @@ class SharedMemory implements AdapterInterface
 	 */
 	protected function initEmptyStorage() {
 		$this->shm->set(self::K_SEM_COUNT, 0);
-		$this->shm->set(self::K_SEM_LIST, array());
 	}
 }
