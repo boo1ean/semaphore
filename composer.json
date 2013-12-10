@@ -10,9 +10,11 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
 
-    }
+    "require": {
+        "boo1ean/shared": "dev-master"
+    },
+
     "autoload": {
         "psr-0": { "Semaphore": "src/" }
     }
