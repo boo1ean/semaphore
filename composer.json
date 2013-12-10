@@ -12,7 +12,8 @@
     "minimum-stability": "dev",
 
     "require": {
-        "boo1ean/shared": "dev-master"
+        "boo1ean/shared": "dev-master",
+        "phpunit/phpunit": "dev-master"
     },
 
     "autoload": {
