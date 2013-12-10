@@ -1,7 +1,7 @@
 <?php namespace Semaphore;
 
 use Adapter\AdapterInterface;
-use Adapter\Filesystem;
+use Adapter\SharedMemory;
 use LogicException;
 
 /**
@@ -11,7 +11,7 @@ use LogicException;
 class Semaphore
 {
 	/**
- 	 * List of active keys due to unlock everything for the rescue
+	 * List of active keys (created in scope of current object) due to unlock everything for the rescue
 	 * @var array
 	 */
 	protected $keys = array();
@@ -39,8 +39,9 @@ class Semaphore
 		$this->autoUnlock = $this->autoUnlock;
 	}
 
+
 	/**
-	 * Unlock all locked semaphores
+	 * Unlock all previously locked semaphores
 	 */
 	public function __destruct() {
 		if ($this->autoUnlock) {
@@ -114,5 +115,9 @@ class Semaphore
 		if (!empty($this->keys[$key])) {
 			unset($this->keys[$key]);
 		}
+	}
+
+	protected function getDefaultAdapter() {
+		return new SharedMemory();
 	}
 }
