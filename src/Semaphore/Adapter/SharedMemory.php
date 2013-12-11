@@ -101,7 +101,7 @@ class SharedMemory implements AdapterInterface
 	 * @return bool
 	 */
 	protected function _unlock($key) {
-		$result = $this->shm->unset($key);
+		$result = $this->shm->forget($key);
 
 		if ($result) {
 			$this->decCounter();

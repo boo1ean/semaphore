@@ -1,7 +1,7 @@
 <?php namespace Semaphore;
 
 use Adapter\AdapterInterface;
-use Adapter\SharedMemory;
+use Semaphore\Adapter\SharedMemory;
 use LogicException;
 
 /**
@@ -95,6 +95,14 @@ class Semaphore
 	 */
 	public function locked($key) {
 		return $this->adapter->locked($locked);
+	}
+
+	/**
+	 * Get semaphore adapter
+	 * @return Adapter\AdapterInterface
+	 */
+	public function getAdapter() {
+		return $this->adapter;
 	}
 
 	/**
