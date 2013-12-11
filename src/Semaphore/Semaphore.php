@@ -94,7 +94,7 @@ class Semaphore
 	 * @return bool
 	 */
 	public function locked($key) {
-		return $this->adapter->locked($locked);
+		return $this->adapter->locked($key);
 	}
 
 	/**
