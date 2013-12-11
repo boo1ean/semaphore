@@ -10,5 +10,6 @@ class BasicTest extends TestCase
 		$this->assertTrue($semaphore->lock($key));
 		$this->assertFalse($semaphore->lock($key));
 		$this->assertTrue($semaphore->unlock($key));
+		$this->assertFalse($semaphore->unlock($key));
 	}
 }
