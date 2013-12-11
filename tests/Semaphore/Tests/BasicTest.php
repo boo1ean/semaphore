@@ -6,8 +6,9 @@ class BasicTest extends TestCase
 {
 	public function testLock() {
 		$semaphore = new Semaphore();
-		$lock = $semaphore->lock('a');
-		var_dump($lock);
-		$semaphore->getAdapter()->destroy();
+        $key = uniqid();
+		$this->assertTrue($semaphore->lock($key));
+		$this->assertFalse($semaphore->lock($key));
+		$this->assertTrue($semaphore->unlock($key));
 	}
 }

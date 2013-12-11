@@ -13,7 +13,7 @@
 
     "require": {
         "boo1ean/shared": "dev-master",
-        "phpunit/phpunit": "dev-master"
+        "phpunit/phpunit": "3.7.*@dev"
     },
 
     "autoload": {
